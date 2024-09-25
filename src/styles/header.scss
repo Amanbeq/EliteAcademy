@@ -1,0 +1,31 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 20px 0;
+  gap: 10px;
+  background-color: transparent;
+
+  .navbar {
+    ul {
+      display: flex;
+      gap: 60px;
+      li {
+        list-style: none;
+        a {
+          text-decoration: none;
+          color: $white;
+          font-size: 24px;
+          font-weight: 400;
+          line-height: 29.05px;
+        }
+      }
+    }
+  }
+  .logo {
+    width: 103px;
+    img {
+      width: 100%;
+    }
+  }
+}

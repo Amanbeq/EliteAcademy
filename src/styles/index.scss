@@ -1,0 +1,17 @@
+@import './variables.scss';
+@import './buttons.scss';
+@import './header.scss';
+@import './components.scss';
+@import './loader.scss';
+@import './footer.scss';
+@import './form-login.scss';
+@import './auth.scss';
+@import './admin.scss';
+
+body {
+  background-color: $background-color !important;
+}
+.container {
+  max-width: 1242px;
+  margin: 0 auto;
+}

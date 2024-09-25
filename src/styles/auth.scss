@@ -1,0 +1,16 @@
+.login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #222127;
+
+  .logo {
+    width: 106px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    img {
+      width: 100%;
+    }
+  }
+}
