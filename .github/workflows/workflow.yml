@@ -1,5 +1,44 @@
- name: CI workflow
+name: JavaScript CI/CD Workflow
 
- on:
-   push:
- 
+on:
+  push:
+    branches:
+      - main  # Trigger on push to the main branch
+  pull_request:
+    branches:
+      - main  # Trigger on pull requests targeting the main branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # The runner environment
+
+    steps:
+      # Step 1: Checkout the repository
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Step 2: Set up Node.js (specify the version in 'node-version')
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'  # Replace with the version of Node.js you need
+
+      # Step 3: Install dependencies (using npm install)
+      - name: Install dependencies
+        run: npm install
+
+      # Step 4: Run tests
+      - name: Run tests
+        run: npm test
+        continue-on-error: false  # Fail the workflow if tests fail
+
+      # Step 5: Build the project (if applicable)
+      - name: Build project
+        run: npm run build  # Use this if you have a build script in your package.json
+
+      # Step 6: Deploy (optional step, only if you are deploying after a successful build)
+      # For example, deploying to Netlify, Vercel, or any other hosting provider
+      - name: Deploy to server
+        run: |
+          echo "Deploying to server..."
+          echo 18.175.138.249
