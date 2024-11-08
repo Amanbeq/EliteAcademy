@@ -39,6 +39,15 @@ jobs:
       # Step 6: Deploy (optional step, only if you are deploying after a successful build)
       # For example, deploying to Netlify, Vercel, or any other hosting provider
       - name: Deploy to server
-        run: |
-          echo "Deploying to server..."
-          echo 18.175.138.249
+        uses: appleboy/ssh-action@v0.1.4
+        with:
+          host: 18.175.138.249  # Server IP address
+          username: ubuntu  # SSH username (e.g., deploy_user)
+          key: ${{ secrets.DEPLOY_SSH_PRIVATE_KEY }}  # SSH private key for authentication
+          port: 22  # Default SSH port
+          script: |
+            cd /home/ubuntu/PrimeAcademy
+            git pull origin main  # Pull the latest code from the repository
+            npm install  # Install dependencies on the server
+            npm run build  # Run the build command if necessary
+            pm2 restart app  # Restart the app using PM2 or your process manager
